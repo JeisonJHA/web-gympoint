@@ -1,68 +1,106 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  <img alt="Gympoint" title="Gympoint" src=".github/logo.png" width="200px" />
+</h1>
 
-## Available Scripts
+<h3 align="center">
+  Desafio 9: Gympoint, front-end web
+</h3>
 
-In the project directory, you can run:
+<h4 align="center">
+  Etapa 3/4 do Desafio Final
+</h4>
 
-### `yarn start`
+<blockquote align="center">“Mude você e todo o resto mudará naturalmente”!</blockquote>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/rocketseat/bootcamp-gostack-desafio-09?color=%2304D361" />
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  <a href="https://rocketseat.com.br">
+    <img alt="Made by Rocketseat" src="https://img.shields.io/badge/made%20by-Rocketseat-%2304D361" />
+  </a>
 
-### `yarn test`
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361" />
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-09/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/rocketseat/bootcamp-gostack-desafio-09?style=social" />
+  </a>
+</p>
 
-### `yarn build`
+<p align="center">
+  <a href="#rocket-sobre-o-desafio">Sobre o desafio</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-entrega">Entrega</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-licença">Licença</a>
+</p>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Sobre o desafio
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Durante esse desafio vamos construir o front-end da aplicação Gympoint que criamos o back-end durante os desafios dos módulos 02 e 03 de Node.js.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A versão web do projeto Gympoint representa a visão da academia, ou seja, todas funcionalidades presentes na versão web são para administradores. As funcionalidades para o aluno serão dispostas no aplicativo mobile.
 
-### `yarn eject`
+### Novas funcionalidades
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Antes de iniciar a parte web, **adicione as seguintes funcionalidades no back-end** da aplicação:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Adicione um campo boolean `true/false` na listagem de matrículas indicando se a matrícula está ativa ou não, ou seja, se a data de término é posterior à atual e a data de início inferior (utilize um campo `VIRTUAL`).
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Por exemplo, no model de Matrícula, adicione um novo campo:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```js
+active: {
+  type: Sequelize.VIRTUAL(Sequelize.BOOLEAN, [
+    'start_date',
+    'end_date',
+  ]),
+  get() {
+    return (
+      isBefore(this.get('start_date'), new Date()) &&
+      isAfter(this.get('end_date'), new Date())
+    );
+  },
+},
+```
 
-## Learn More
+E na query:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```js
+const registrations = await Registration.findAll({
+  attributes: ["id", "start_date", "end_date", "price", "active"]
+});
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Permita que a listagem de alunos (`/users`) seja filtrada por nome recebendo um Query Parameter `?q=Diego` e buscando no banco usuários com esse filtro (utilize o operador `like`). Caso o parâmetro não seja passado, retorne todos usuários;
 
-### Code Splitting
+### Informações importantes
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+1. Antes de deletar qualquer registro do banco crie uma verificação adicinal usando a função `confirm` do JavaScript;
+2. Para formatação de datas utilize sempre a biblioteca `date-fns`;
+3. Não realize formatações de valores dentro do `return ()` nos componentes React, opte por formatar os dados assim que recebidos da API;
+4. No cadastro/edição de planos e matrículas os inputs com fundo cinza são calculados automaticamente com base na seleção dos outros valores;
+5. No cadastro/edição de matrícula deve ser possível buscar o aluno pelo nome, utilize o método `async` da biblioteca [React Select](https://react-select.com/home#async). Os planos devem ser buscados da API assim que a página carregar e não devem possuir filtro.
 
-### Analyzing the Bundle Size
+### Opcionais
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+1. Adicione paginação no front-end e back-end para todas listagens;
+2. Utilize máscaras para inputs numéricos de valores, peso e altura;
 
-### Making a Progressive Web App
+## 🎨 Layout
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+O layout do desafio está em anexo como um arquivo `.sketch`.
 
-### Advanced Configuration
+Caso esteja usando OS X / Windows você pode abrir esse arquivo com um software chamado [Zeplin](https://zeplin.io).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Caso esteja no Linux ou não vá usar o Zeplin existe uma pasta chamada `Gympoint WEB` junto com esse repositório, baixe-a e acesse o arquivo `index.html` para visualizar as telas da aplicação.
 
-### Deployment
+## 📅 Entrega
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Esse desafio **não precisa ser entregue** e não receberá correção. Além disso, o código fonte **não está disponível** por fazer parte do **desafio final**, que será corrigido para **certificação** do bootcamp. Após concluir o desafio, adicionar esse código ao seu Github é uma boa forma de demonstrar seus conhecimentos para oportunidades futuras.
 
-### `yarn build` fails to minify
+## 📝 Licença
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
+
+---
+
+Feito com ♥ by Rocketseat :wave: [Entre na nossa comunidade!](https://discordapp.com/invite/gCRAFhc)
