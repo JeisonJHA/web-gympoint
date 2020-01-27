@@ -2,35 +2,35 @@
   <img alt="Gympoint" title="Gympoint" src=".github/logo.png" width="200px" />
 </h1>
 
-<h3 align="center">
-  Desafio 9: Gympoint, front-end web
-</h3>
-
 <h4 align="center">
-  Etapa 3/4 do Desafio Final
+  A gym app that allow the students to make de register and questions.
 </h4>
 
-<blockquote align="center">“Mude você e todo o resto mudará naturalmente”!</blockquote>
-
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/rocketseat/bootcamp-gostack-desafio-09?color=%2304D361" />
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/jeisonjha/web-gympoint.svg">
 
-  <a href="https://rocketseat.com.br">
-    <img alt="Made by Rocketseat" src="https://img.shields.io/badge/made%20by-Rocketseat-%2304D361" />
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/jeisonjha/web-gympoint.svg">
+
+  <a href="https://www.codacy.com/manual/JeisonJHA/web-gympoint?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JeisonJHA/web-gympoint&amp;utm_campaign=Badge_Grade">
+    <img src="https://api.codacy.com/project/badge/Grade/aa3da21389b94437990040f2913eb5cd"/>
   </a>
 
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361" />
-
-  <a href="https://github.com/Rocketseat/bootcamp-gostack-desafio-09/stargazers">
-    <img alt="Stargazers" src="https://img.shields.io/github/stars/rocketseat/bootcamp-gostack-desafio-09?style=social" />
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/jeisonjha/web-gympoint.svg">
+  <a href="https://github.com/jeisonjha/web-gympoint/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jeisonjha/web-gympoint.svg">
   </a>
+
+  <a href="https://github.com/jeisonjha/web-gympoint/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/jeisonjha/web-gympoint.svg">
+  </a>
+
+  <img alt="GitHub" src="https://img.shields.io/github/license/jeisonjha/web-gympoint.svg">
 </p>
-
 <p align="center">
   <a href="#rocket-sobre-o-desafio">Sobre o desafio</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-entrega">Entrega</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
+  <a href="#memo-licença">Licence</a>
 </p>
 
 ## 🚀 Sobre o desafio
@@ -66,7 +66,7 @@ E na query:
 
 ```js
 const registrations = await Registration.findAll({
-  attributes: ["id", "start_date", "end_date", "price", "active"]
+  attributes: ['id', 'start_date', 'end_date', 'price', 'active']
 });
 ```
 
@@ -103,4 +103,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 ---
 
-Feito com ♥ by Rocketseat :wave: [Entre na nossa comunidade!](https://discordapp.com/invite/gCRAFhc)
+Made by Jeison Azevedo :wave: [Get in touch!](https://www.linkedin.com/in/jeison-azevedo/)

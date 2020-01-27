@@ -38,3 +38,25 @@
 
 - yarn add react-router-dom
   -- rotas
+
+- yarn add styled-components
+
+```javascript
+global style
+{
+  * {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+  }
+
+  html, body, #toot {
+    min-height: 100%;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased !important;
+  }
+}
+```
